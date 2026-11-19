@@ -1,0 +1,9 @@
+{
+    "Lua.diagnostics.globals": [
+        "love",
+        "drawRect"
+    ],
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ]
+}
