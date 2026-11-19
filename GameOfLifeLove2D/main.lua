@@ -5,32 +5,21 @@ ENV = {}
 
 local paused = false
 local placing = false
-local placing_cell_pos_x, placing_cell_pos_y
+
 
 
 function love.load()
     love.window.setTitle("Game Of Life")
     love.window.setMode(COLS * CELL_SIZE, ROWS * CELL_SIZE)
-    --local was_dead = false
     for y = 1, ROWS do 
         for x = 1, COLS do
             local grid_pos = (y - 1) * COLS + x
             ENV[grid_pos] = Cell:new(true)
-            --was_dead = not was_dead
         end
     end
 end
 
 function love.update(dt)
-    mouse_pos_x, mouse_pos_y = love.mouse.getPosition()
-    for i = 1, COLS, 1 do 
-        if mouse_pos_x <= COLS * i or mouse_pos_x >= COLS * (i - 1) then 
-            placing_cell_pos_x = COLS * (i - 1)
-        end
-        if mouse_pos_y <= ROWS * i or mouse_pos_y >= ROWS * (i - 1) then 
-            placing_cell_pos_y = ROWS * (i - 1)
-        end
-    end
     next_states = {}
     for y = 1, ROWS do 
         for x = 1, COLS do 
@@ -56,7 +45,6 @@ function love.draw()
             local row = math.floor((i - 1) / COLS)
             love.graphics.setColor(0.2, 0.8, 0.3)
             if placing then 
-                --drawRect(placing_cell_pos_x, placing_cell_pos_y)
                 drawRect(col * CELL_SIZE, row * CELL_SIZE)
             end
         end

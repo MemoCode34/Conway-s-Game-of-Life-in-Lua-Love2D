@@ -1,0 +1,8 @@
+{
+    "Lua.diagnostics.globals": [
+        "love",
+        "mouse_pos_x",
+        "drawRect",
+        "next_states"
+    ]
+}
